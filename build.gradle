@@ -9,7 +9,9 @@ buildscript {
     jcenter()
   }
 
-  dependencies {}
+  dependencies {
+    classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.1'
+  }
 }
 
 allprojects {

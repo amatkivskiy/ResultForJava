@@ -14,4 +14,4 @@ deployment:
    release:
       branch: master
       commands:
-        - ./gradlew generatePomFileForMavenPublication bintrayUpload
+        - ./gradlew generatePomFileForMavenPublication bintrayUpload -PdryRun=false

@@ -1,0 +1,12 @@
+machine:
+  java:
+    version: openjdk8
+test:
+  override:
+    - ./gradlew build
+  post:
+    # Copy jars to the $CIRCLE_ARTIFACTS folder.
+    - cp -r result/build/libs/* $CIRCLE_ARTIFACTS/
+    # Copy test results to the $CIRCLE_ARTIFACTS folder.
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;

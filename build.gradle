@@ -1,0 +1,22 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+ext {
+  versions = [junit  : "4.12",
+              mockito: "2.7.12"]
+}
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {}
+}
+
+allprojects {
+  group 'com.amatkivskiy'
+  version '1.0.1'
+
+  repositories {
+    jcenter()
+  }
+}

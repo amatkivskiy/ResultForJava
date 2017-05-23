@@ -1,0 +1,17 @@
+apply plugin: 'java'
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
+dependencies {
+  testCompile "org.mockito:mockito-core:${versions.mockito}"
+  testCompile "junit:junit:${versions.junit}"
+}
+
+uploadArchives {
+  repositories {
+    flatDir {
+      dirs '../artifacts'
+    }
+  }
+}

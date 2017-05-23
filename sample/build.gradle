@@ -1,0 +1,28 @@
+apply plugin: 'java'
+apply plugin: 'me.tatarka.retrolambda'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.6.0'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+retrolambda {
+    javaVersion JavaVersion.VERSION_1_7
+}
+
+dependencies {
+    compile project(':result')
+    testCompile "junit:junit:${versions.junit}"
+}

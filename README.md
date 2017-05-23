@@ -1,6 +1,6 @@
 # Result for Java
 
-![Android Supported](https://img.shields.io/badge/android%20support-YES-green.svg)
+[![CircleCI](https://circleci.com/gh/amatkivskiy/ResultForJava/tree/master.svg?style=svg)](https://circleci.com/gh/amatkivskiy/ResultForJava/tree/master) ![Android Supported](https://img.shields.io/badge/android%20support-YES-green.svg)
 
 Simple and lightwight implementation of success/failure pattern with **_KISS_** in mind. Indeed it is just a `Result<V, E>` type.
 

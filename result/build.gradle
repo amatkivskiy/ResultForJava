@@ -1,4 +1,6 @@
 apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'com.github.kt3k.coveralls'
 
 sourceCompatibility = JavaVersion.VERSION_1_7
 targetCompatibility = JavaVersion.VERSION_1_7
@@ -6,6 +8,13 @@ targetCompatibility = JavaVersion.VERSION_1_7
 dependencies {
   testCompile "org.mockito:mockito-core:${versions.mockito}"
   testCompile "junit:junit:${versions.junit}"
+}
+
+jacocoTestReport {
+  reports {
+    xml.enabled true
+    csv.enabled false
+  }
 }
 
 uploadArchives {

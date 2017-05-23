@@ -3,7 +3,7 @@ machine:
     version: openjdk8
 test:
   override:
-    - ./gradlew build
+    - ./gradlew build jacocoTestReport coveralls
   post:
     # Copy jars to the $CIRCLE_ARTIFACTS folder.
     - cp -r result/build/libs/* $CIRCLE_ARTIFACTS/

@@ -1,6 +1,6 @@
 # Result for Java
 
-[![CircleCI](https://circleci.com/gh/amatkivskiy/ResultForJava/tree/master.svg?style=svg)](https://circleci.com/gh/amatkivskiy/ResultForJava/tree/master) [![Coverage Status](https://coveralls.io/repos/github/amatkivskiy/ResultForJava/badge.svg?branch=master)](https://coveralls.io/github/amatkivskiy/ResultForJava?branch=master) ![Android Supported](https://img.shields.io/badge/android%20support-YES-green.svg)
+[![CircleCI](https://circleci.com/gh/amatkivskiy/ResultForJava/tree/master.svg?style=svg)](https://circleci.com/gh/amatkivskiy/ResultForJava/tree/master) [![Coverage Status](https://coveralls.io/repos/github/amatkivskiy/ResultForJava/badge.svg?branch=master)](https://coveralls.io/github/amatkivskiy/ResultForJava?branch=master) ![Android Supported](https://img.shields.io/badge/android%20support-YES-green.svg) [ ![Download](https://api.bintray.com/packages/amatkivskiy/maven/result/images/download.svg) ](https://bintray.com/amatkivskiy/maven/result/_latestVersion)
 
 Simple and lightwight implementation of success/failure pattern with **_KISS_** in mind. Indeed it is just a `Result<V, E>` type.
 
@@ -15,23 +15,28 @@ This means that any operation that you need can finish with either `Success` wit
 - Simplest way to create Result:
 ```
 Result.success("success");
------------------------
+```
+```
 Result.failure("failure");
------------------------
+```
+```
 Result.of("success");
------------------------
+```
+```
 Result.of(new Function<String>() {
   @Override public String call() throws Exception {
     return "success";
   }
 });
------------------------
+```
+```
 Result.orDefault(new Function<Integer>() {
   @Override public Integer call() throws Exception {
     return Integer.parseInt("invalid");
   }
 }, -1);
------------------------
+```
+```
 Result.orFailWith(new Function<Integer>() {
   @Override public Integer call() throws Exception {
     return Integer.parseInt("invalid");
@@ -46,7 +51,8 @@ Result.of("success").map(new Transformer<String, Integer>() {
     return value.length();
   }
 });
------------------------
+```
+```
 Result.of("success")
   .flatMap(new Transformer<Result<String, Object>, Result<Integer, IllegalArgumentException>>() {
     @Override public Result<Integer, IllegalArgumentException> apply(Result<String, Object> value) {
@@ -63,9 +69,11 @@ Result.of("success")
 - Consuming `Result`:
 ```
 Result.success("success").value();
------------------------
+```
+```
 Result.failure("failure").error();
------------------------
+```
+```
 Result.of("success")
       .onSuccess(new Consumer<String>() {
         @Override public void accept(String value) {
@@ -77,7 +85,8 @@ Result.of("success")
           System.err.println(value);
         }
       });
------------------------
+```
+```
 String success = Result.<String, String>failure("failure").or("success");
 ```
 
@@ -127,7 +136,9 @@ validateInputs(login, password).map(value -> new Credentials(login, password))
 ```
 
 ## Download
-TODO
+```
+compile 'com.github.amatkivskiy:result:1.0.1'
+```
 
 ## Inspired by
 This project was heavily inspired by:

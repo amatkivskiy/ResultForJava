@@ -55,6 +55,20 @@ public class ResultTests {
   @Test public void testResultOfCorrect() throws Exception {
     Result<String, Exception> result = Result.of(new Function<String>() {
       @Override public String call() throws Exception {
+        return OOOH_YEAH;
+      }
+    });
+
+    assertThat(result.isSuccess(), is(true));
+    assertThat(result.value(), is(notNullValue()));
+    assertThat(result.isEmpty(), is(false));
+    assertThat(result.value(), is(OOOH_YEAH));
+    assertThat(result.error(), is(nullValue()));
+  }
+
+  @Test public void testResultOfFailureCorrect() throws Exception {
+    Result<String, Exception> result = Result.of(new Function<String>() {
+      @Override public String call() throws Exception {
         // Just throw IllegalStateException
         throw new IllegalStateException(OOOH_NOOO);
       }
@@ -87,14 +101,27 @@ public class ResultTests {
   @Test public void testResultOrFailNullErrorCorrect() throws Exception {
     Result<String, String> result = Result.orFailWith(new Function<String>() {
       @Override public String call() throws Exception {
-        throw new NullPointerException(OOOH_NOOO);
+        return OOOH_YEAH;
       }
     }, null);
 
-    assertThat(result.isSuccess(), is(false));
-    assertThat(result.value(), is(nullValue()));
-    assertThat(result.isEmpty(), is(true));
+    assertThat(result.isSuccess(), is(true));
+    assertThat(result.isEmpty(), is(false));
+    assertThat(result.value(), is(OOOH_YEAH));
     assertThat(result.error(), is(nullValue()));
+  }
+
+  @Test public void testResultOrDefaultCorrect() throws Exception {
+    Result<String, String> result = Result.orDefault(new Function<String>() {
+      @Override public String call() throws Exception {
+        return OOOH_YEAH;
+      }
+    }, OOOH_NOOO);
+
+    assertThat(result.isSuccess(), is(true));
+    assertThat(result.isEmpty(), is(false));
+    assertThat(result.error(), is(nullValue()));
+    assertThat(result.value(), is(OOOH_YEAH));
   }
 
   @Test public void testResultOrDefaultReturnDefault() throws Exception {

@@ -23,6 +23,13 @@ public abstract class Result<V, E> {
    */
   public abstract boolean isEmpty();
 
+  /**
+   * @return true if successful non empty @{@link Result}, false otherwise.
+   */
+  public boolean isSuccessfulNonEmpty() {
+    return isSuccess() && !isEmpty();
+  }
+
   // Syntactic sugar
 
   /**

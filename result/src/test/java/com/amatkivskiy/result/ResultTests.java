@@ -235,6 +235,16 @@ public class ResultTests {
     assertThat(Result.<String, String>failure(OOOH_NOOO).or(OOOH_YEAH), is(OOOH_YEAH));
   }
 
+  @Test public void testIsSuccessfulAndEmptyCorrect() throws Exception {
+    assertThat(Result.success(null).isSuccessfulNonEmpty(), is(false));
+
+    assertThat(Result.success(1).isSuccessfulNonEmpty(), is(true));
+
+    assertThat(Result.failure(1).isSuccessfulNonEmpty(), is(false));
+
+    assertThat(Result.failure(null).isSuccessfulNonEmpty(), is(false));
+  }
+
   static class DefaultThrowerImpl<T> implements Function<T> {
     @Override public T call() {
       return null;

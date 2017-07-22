@@ -137,7 +137,7 @@ validateInputs(login, password).map(value -> new Credentials(login, password))
 
 ## Download
 ```
-compile 'com.github.amatkivskiy:result:1.0.1'
+compile 'com.github.amatkivskiy:result:x.y.z'
 ```
 
 ## Inspired by
